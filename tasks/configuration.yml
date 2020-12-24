@@ -1,0 +1,24 @@
+---
+- name: Configure davfs2 locks
+  lineinfile: path=/etc/davfs2/davfs2.conf regexp="^#use_locks" line="use_locks 0"
+
+- name: Allow to user run mount command
+  file:
+    path: /usr/sbin/mount.davfs
+    mode: 4755
+
+- name: Add cridentials
+  lineinfile:
+    path: /etc/davfs2/secrets
+    line: "{{ item.src }} {{ item.login }} {{ item.password }}"
+    state: present
+  no_log: true
+  with_items: "{{ davfs2_mounts }}"
+
+- name: Add mount path into fstab
+  lineinfile:
+    path: /etc/fstab
+    line: "{{ item.src }} {{ item.mount_path }} davfs noauto,_netdev,rw,uid=user,gid=group,file_mode=640,dir_mode=755,x-systemd.automount,x-systemd.mount-timeout=10s,x-systemd.idle-timeout=10m 0 0"
+    state: present
+  no_log: true
+  with_items: "{{ davfs2_mounts }}"

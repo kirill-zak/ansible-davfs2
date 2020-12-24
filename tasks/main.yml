@@ -1,0 +1,5 @@
+---
+- import_tasks: packages.yml
+- import_tasks: users.yml
+- import_tasks: mount_path.yml
+- import_tasks: configuration.yml

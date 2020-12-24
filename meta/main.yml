@@ -1,0 +1,22 @@
+galaxy_info:
+  author: kirill-zak
+  description: Install and configurate davfs2
+  company: https://kirill-zak.ru
+  license: MIT
+
+  min_ansible_version: 2.7
+  platforms:
+  - name: Ubuntu
+    versions:
+      - focal
+      - bionic
+      - xenial
+  - name: Debian
+    version:
+      - 10
+      - 9
+
+  galaxy_tags: 
+    - system
+    - storage
+dependencies: []

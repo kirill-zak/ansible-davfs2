@@ -1,0 +1,7 @@
+---
+- name: Add users into davfs2 group
+  user:
+    name: "{{ item }}"
+    groups: davfs2
+    state: present
+  with_items: "{{ davfs2_users }}"

@@ -1,0 +1,5 @@
+---
+- name: Install davfs2 package
+  package:
+    name: davfs2
+    state: present

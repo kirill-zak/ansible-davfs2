@@ -1,0 +1,8 @@
+---
+- name: Create mount path
+  file:
+    path: "{{ item.mount_path }}"
+    state: directory
+  no_log: true
+  with_items: "{{ davfs2_mounts }}"
+  

@@ -43,6 +43,7 @@ Example Playbook
       roles:
          - { role: kirill_zak.ansible_davfs2 }
 ```
+Note: You mast using Ansible Vault for store sensetive information like credential.
 
 License
 -------

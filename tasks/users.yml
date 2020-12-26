@@ -3,5 +3,5 @@
   user:
     name: "{{ item }}"
     groups: davfs2
-    state: present
+    append: yes
   with_items: "{{ davfs2_users }}"

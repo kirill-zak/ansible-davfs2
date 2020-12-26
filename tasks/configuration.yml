@@ -4,8 +4,11 @@
 
 - name: Allow to user run mount command
   file:
-    path: /usr/sbin/mount.davfs
-    mode: 4755
+    path: "{{ item }}"
+    mode: '4755'
+  loop:
+    - /usr/sbin/mount.davfs
+    - /usr/sbin/umount.davfs
 
 - name: Add cridentials
   lineinfile:
@@ -18,7 +21,7 @@
 - name: Add mount path into fstab
   lineinfile:
     path: /etc/fstab
-    line: "{{ item.src }} {{ item.mount_path }} davfs noauto,_netdev,rw,uid=user,gid=group,file_mode=640,dir_mode=755,x-systemd.automount,x-systemd.mount-timeout=10s,x-systemd.idle-timeout=10m 0 0"
+    line: "{{ item.src }}\t{{ item.mount_path }}\tdavfs\tnoauto,_netdev,rw,user\t0\t0"
     state: present
   no_log: true
   with_items: "{{ davfs2_mounts }}"

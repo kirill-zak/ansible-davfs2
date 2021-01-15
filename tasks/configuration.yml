@@ -19,9 +19,12 @@
   with_items: "{{ davfs2_mounts }}"
 
 - name: Add mount path into fstab
-  lineinfile:
-    path: /etc/fstab
-    line: "{{ item.src }}\t{{ item.mount_path }}\tdavfs\tnoauto,_netdev,rw,user\t0\t0"
+  mount:
+    path: "{{ item.mount_path }}"
+    src: "{{ item.src }}"
+    fstype: davfs
+    opts: noauto,_netdev,rw,user
     state: present
+    backup: yes
   no_log: true
   with_items: "{{ davfs2_mounts }}"

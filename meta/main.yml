@@ -16,7 +16,8 @@ galaxy_info:
       - 10
       - 9
 
-  galaxy_tags: 
+  galaxy_tags:
     - system
     - storage
-dependencies: []
+
+  dependencies: []

@@ -20,6 +20,9 @@ The structure of WebDAV mount item:
 * `login`: WebDAV login.
 * `password`: WebDAV password.
 * `mount_path`: Local mount path
+* `owner`: Owner of mount path
+* `group`: Group for mount path
+* `mode`: Mount path mode
 
 Dependencies
 ------------
@@ -40,6 +43,9 @@ Example Playbook
             login: dummy
             password: pa$$Word
             mount_path: /media/cloud/MyCloud
+            owner: dummy
+            group: dummy
+            mode: 0700
       roles:
          - { role: kirill_zak.ansible_davfs2 }
 ```

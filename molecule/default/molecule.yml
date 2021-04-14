@@ -31,6 +31,13 @@ platforms:
   - name: debian9
     image: "geerlingguy/docker-debian9-ansible:latest"
     pre_build_image: true
+  # CentOS
+  - name: centos8
+    image: "geerlingguy/docker-centos8-ansible:latest"
+    pre_build_image: true
+  - name: centos7
+    image: "geerlingguy/docker-centos7-ansible:latest"
+    pre_build_image: true
 
 provisioner:
   name: ansible
@@ -44,10 +51,16 @@ provisioner:
             login: test
             password: pa$$word
             mount_path: /media/davfs01
+            owner: "test"
+            group: "test"
+            mode: "0700"
           - src: https://davfs02.local
             login: test
             password: pa$$word
             mount_path: /media/davfs02
+            owner: "test"
+            group: "test"
+            mode: "0700"
 
 verifier:
   name: ansible

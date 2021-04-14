@@ -45,7 +45,7 @@ Example Playbook
             mount_path: /media/cloud/MyCloud
             owner: dummy
             group: dummy
-            mode: 0700
+            mode: "0700"
       roles:
          - { role: kirill_zak.ansible_davfs2 }
 ```

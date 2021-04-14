@@ -1,4 +1,4 @@
-Role Name
+ansible-davfs2
 =========
 
 Install and configurate davfs
